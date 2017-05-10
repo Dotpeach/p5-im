@@ -11,8 +11,8 @@ $l : lightgreen !default;
 // Couleurs de base
 // ----------------
 
-$color-white: #fff !default;
-$color-black: #000 !default;
+$white: #fff !default;
+$black: #000 !default;
 
 
 // Couleurs back-office
@@ -22,10 +22,10 @@ $color-black: #000 !default;
 $guardsmanred   : #b90313 !default; // body background
 
 // UI
-$torchred       : #f9061d !default; // message hover // hold/new display // Sunday
-$gray           : #8a8989 !default; // disabled text
-$dovegrave      : #6c6c6c !default; // read avatar default bg
-$pelorous       : #35a9c9 !default; // saturday blue
+$torchred            : #f9061d !default; // message hover // hold/new display // Sunday
+$gray                : #8a8989 !default; // disabled text
+$dovegrave           : #6c6c6c !default; // read avatar default bg
+$pelorous            : #35a9c9 !default; // saturday blue
 
 // Couleurs front-office
 // ---------------------
@@ -33,8 +33,8 @@ $pelorous       : #35a9c9 !default; // saturday blue
 
 // Layout
 // ------
-$body-bg: $guardsmanred !default;
+$body-bg              : $guardsmanred !default;
 
 // Composants
 // ----------
-$color-text-primary:   $scorpion !default;
+$color-text-primary   :  $white !default;

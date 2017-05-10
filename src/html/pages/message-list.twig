@@ -1,4 +1,4 @@
-{# back-layout.twig #}
+{# message-list.twig #}
 {# ------------------------------------------------------------------------- #}
 
 {# VARIABLES STATIQUES #}
@@ -10,19 +10,11 @@
 
 {# LAYOUT #}
 {# ------------------------------------------------------------------------- #}
-{% extends "../layouts/_back-layout.twig" %}
+{% extends "../layouts/_default.twig" %}
 
 {# GABARIT PRINCIPAL #}
 {# ------------------------------------------------------------------------- #}
 
-{% block intro %}
-  <h1 class="dashContent_intro_title">Bonjour <span class="emphasis">Florent,</span> <span class="smaller">comment ça va ?</span></h1>
-{% endblock %}
-
 {% block main %}
-  {% include '../partials/_dashWidget.twig' %}
-{% endblock %}
-
-{% block sidebar %}
-  {% include '../partials/_dashWidget.twig' %}
+  Hello world
 {% endblock %}

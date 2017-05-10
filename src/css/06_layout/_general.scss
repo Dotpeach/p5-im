@@ -1,0 +1,21 @@
+// Layout : général
+// ================
+//
+
+// Styles génériques sur HTML/Body
+// -------------------------------
+//html {
+//}
+
+body {
+  @include font-smoothing(on);
+  background-color: $body-bg;
+  font-family: $content-font;
+  font-size: $base-font_size;
+  line-height: $base-line_height;
+  color: $color-text-primary;
+  position: relative;
+  @include mobileLayout {
+    font-size: $mobile-font_size;
+  }
+}
