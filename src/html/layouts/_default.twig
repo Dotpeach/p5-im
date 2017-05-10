@@ -13,12 +13,8 @@
   <script src="{% root %}/js/script.js" async></script>
 </head>
 <body>
-  <!-- include inline svg symbols -->
-  <div style="display: none">
-    {{ filecontent('../assets/svg/symbols.svg') }}
-  </div>
-  <section>
+  <main class="p5im-main">
     {% block main %}{% endblock %}
-  </section>
+  </main>
 </body>
 </html>

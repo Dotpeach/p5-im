@@ -19,3 +19,12 @@ body {
     font-size: $mobile-font_size;
   }
 }
+
+// Conteneur main
+.p5im-main {
+  box-sizing: border-box;
+  padding: 5%;
+  width: 80%;
+  margin: auto;
+  border: 15px solid $black;
+}
