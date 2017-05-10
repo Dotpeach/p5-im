@@ -1,0 +1,24 @@
+{# _default.twig
+   Ce gabarit est utilisé par les pages du projets
+#}<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+  <title>{{ title }}</title>
+
+  <link href="{% root %}/css/styles.css" rel="stylesheet">
+  <script src="{% root %}/js/script.js" async></script>
+</head>
+<body>
+  <!-- include inline svg symbols -->
+  <div style="display: none">
+    {{ filecontent('../assets/svg/symbols.svg') }}
+  </div>
+  <section>
+    {% block main %}{% endblock %}
+  </section>
+</body>
+</html>

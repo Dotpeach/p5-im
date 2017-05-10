@@ -1,0 +1,71 @@
+// Variables
+// ==========
+// Document est destiné à contenir toutes les variables spécifiques du thème
+
+// Prefix client
+// -------------
+$class-prefix: cpc !default;
+
+// Typographie
+// -----------
+// Variables classiques :
+$base-face            : Helvetica, Arial, "Trebuchet MS", sans-serif !default;
+$serif-face           : Georgia, "Times New Roman", serif !default;
+$base-font_size       : 14px !default;
+$mobile-font_size     : 14px !default;
+$base-line_height     : 1.5  !default;
+
+// Duo de font (le design repose sur l'alternance de deux fonts) :
+$heading-font         : 'merriweatherbold_italic', $base-face !default;
+$content-font         : 'noto_sansregular', $base-face !default;
+
+// Mes variables typo de base
+$webfont              : 'noto_sansregular', $base-face !default;
+$webfont-bold         : 'noto_sansbold', $base-face !default;
+//$webfont-black        : 'Open Sans', $base-face !default;
+$webfont-italic       : 'noto_sansitalic', $base-face !default;
+$webfont-bolditalic   : 'noto_sansbold_italic', $base-face !default;
+//$webfont-blackitalic  : 'Open Sans', $base-face !default;
+
+
+// Layout
+// ------
+// Dimension du layout :
+$site-width            : 100% !default;
+$container-width       : 1000px !default;
+
+// Variables de la grille verticale :
+$column-width: 103px !default;
+$gutter-width: 28px !default;
+$columns     : 12 !default;
+$site-width  : 1600px !default;
+
+// Valeur en % d'une goutière de la grille
+$horizontal-gutter: 1.75% !default; // en dehors de l-constrained
+$constrained-gutter: 2% !default; // à l'intérieur de l-constrained
+
+// Variables de la grille horizontale :
+$vertical-gutter: 14px !default;
+
+// Dimensions mediaqueries
+$desktop-min-width: $container-width !default;
+$mobile-max-width : $container-width !default;
+
+// Variables des dotBlock
+// ---------------------
+$dotBlock-txtcolor: rgba(#000, 0.74) !default;
+
+// Dimensions de l'UI
+// -------------------
+
+// Valeurs des z-index
+// -------------------
+$zindex-mobileheader: 70 !default;
+$zindex-stickyheader: 65 !default;
+$zindex-cookie: 60 !default;
+$zindex-header: 50 !default;
+$zindex-nav: 30 !default;
+$zindex-contentnav: 15 !default;
+$zindex-subnav: 10 !default;
+$zindex-contentside: 2 !default;
+$zindex-offcanvaspic: 0 !default;

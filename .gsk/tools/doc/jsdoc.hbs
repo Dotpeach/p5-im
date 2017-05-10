@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+  <title>API JavaScript</title>
+
+  <!-- SCRIPT -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- STYLES -->
+  <link rel="stylesheet" href="{{root}}/css/doc.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github-gist.min.css">
+</head>
+<body class="ca">
+  <header class="ca__header">
+    <div class="ca__pageWrapper">
+      <h1 class="ca__headerLogo">JavaScript APIs</h1>
+
+      <ul class="ca__headerNav">
+        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{{root}}">Liste des pages</a></li>
+        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{{root}}/doc">Documentation</a></li>
+        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{{root}}/doc/styleguide">Guide des styles</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="ca__pageWrapper">
+    <nav class="ca__sidebar">
+      <ul class="ca__sidebarMenu">
+        <li class="ca__sidebarMenuItem">
+          <a class="ca__sidebarLink" href="{{root}}/doc">
+            <span class="ca__sidebarRef">::</span>
+            Documentation
+          </a>
+        </li>
+      </ul>
+
+      <ul class="ca__sidebarMenu">
+        {{#each toc}}
+        <li class="ca__sidebarMenuItem">
+          <a class="ca__sidebarLink" href="{{url}}">
+            {{#if dir}}<span class="ca__sidebarRef">{{dir}}&nbsp;:</span>{{/if}}
+            {{name}}
+          </a>
+        </li>
+        {{/each}}
+      </ul>
+
+      <ul class="ca__sidebarMenu">
+        <li class="ca__sidebarMenuItem">
+          <a class="ca__sidebarLink" href="{{root}}/doc/js">
+            <span class="ca__sidebarRef">::</span>
+            API JavaScripts
+          </a>
+        </li>
+        <li class="ca__sidebarMenuItem">
+          <a class="ca__sidebarLink" href="{{root}}/doc/styleguide">
+            <span class="ca__sidebarRef">::</span>
+            Guide des styles
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <main class="ca__content ca__md">
+      {{#each data}}
+      <section>
+        {{#if ctx}}
+          <h1>{{ ctx.string }}</h1>
+
+          {{#if description}}{{{ description.summary }}}{{/if}}
+
+          {{#if tags.length}}
+          <div class="ca__tableWrapper">
+            <table class="ca__table">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each tags}}
+                <tr>
+                  <td><em>@{{type}}</em></td>
+                  <td>{{name}}{{#if optional}}<sup title="Ce paramètre est optionel">*</sup>{{/if}}</td>
+                  <td>{{{typesDescription}}}</td>
+                  <td>{{{description}}}</td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+          {{/if}}
+
+          {{#if description}}{{{ description.body }}}{{/if}}
+        {{/if}}
+
+        <h2>Source</h2>
+        <pre><code class="javascript">{{ code }}</code></pre>
+      </section>
+      {{/each}}
+    </main>
+  </div>
+</body>
+</html>

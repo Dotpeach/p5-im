@@ -1,0 +1,460 @@
+// VARIABLES
+// ----------------------------------------------------------------------------
+// Colors
+$darker-grey: #3A3737;
+$dark-grey: #666666;
+$grey: #A6A6A6;
+$light-grey: #E6E6E6;
+$dark-gold: #C8A151;
+$dark-red: #990000;
+
+$color-link: $dark-red;
+$color-bg-content: #FFFFFF;
+$color-bg-page: #FAF8F4;
+$color-title: $dark-gold;
+$color-bg-dark-cell: $darker-grey;
+$color-fg-dark-cell: #FFFFFF;
+$color-fg-light-cell: $darker-grey;
+$color-bg-light-cell: #FFFFFF;
+
+// Grid
+$column: 4rem;
+$gap: 1rem;
+
+// Icon font
+$font-icon: 'fontello';
+
+
+// Functions
+// ----------------------------------------------------------------------------
+@function grid-width($nbr) {
+  @return $column * $nbr + $gap * ($nbr - 1);
+}
+
+
+// Mixins
+// ----------------------------------------------------------------------------
+@mixin reset-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin content-block {
+  border-radius: .5rem;
+  background: $color-bg-content;
+}
+
+%title {
+  font-weight: normal;
+  color: $color-title;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 2rem 0 1rem;
+}
+
+%title1 {
+  @extend %title;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  padding-bottom: .8rem;
+  border-bottom: 1px solid $color-title;
+}
+
+%title2 {
+  @extend %title;
+  font-size: 1.45rem;
+  padding-top: .8rem;
+  border-top: 1px solid $color-title;
+}
+
+%title3 {
+  @extend %title;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding-left: 1.5em;
+}
+
+%title4 {
+  @extend %title;
+  font-size: 1rem;
+  font-weight: bold;
+  padding-left: 3em;
+}
+
+// MAIN STYLES
+// ----------------------------------------------------------------------------
+.ca {
+  font: 1em/140% Georgia, serif;
+  padding: 0;
+  margin: 0;
+  background: $color-bg-page;
+
+  &__pageWrapper {
+    margin: 0 auto;
+    max-width: grid-width(12);
+    overflow: hidden;
+  }
+
+  &__sidebar {
+    @include content-block;
+
+    float: left;
+    width: grid-width(3);
+    box-sizing: border-box;
+    margin: 1rem 0;
+    padding: 1rem;
+
+    &Menu {
+      @include reset-list;
+
+      & & {
+        margin-left: 1rem;
+      }
+
+      & + & {
+        border-top: 3px solid $color-bg-page;
+        margin-top: 1rem;
+        padding-top: 1rem;
+      }
+    }
+
+    &Link {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $dark-gold;
+        text-decoration: underline;
+      }
+    }
+
+    &Ref {
+      color: $grey;
+    }
+  }
+
+  &__content {
+    @include content-block;
+
+    margin: 1rem 0 1rem grid-width(3) + $gap;
+    padding: $gap;
+  }
+
+  &__header {
+    background: $color-bg-content;
+    overflow: hidden;
+
+    &Logo {
+      font: 1.5rem Georgia, serif;
+      background: url('../img/clever-age-logo.png') left center no-repeat;
+      background-size: auto 1.2em;
+      margin: 0;
+      padding: 1rem 0 1rem 6rem;
+      float: left;
+    }
+
+    &Nav {
+      @include reset-list;
+
+      float: right;
+
+      &Item {
+        display: inline-block;
+      }
+
+      &Link {
+        display: block;
+        font: 1.25rem Georgia, serif;
+        padding: 1.25rem 0 .75rem;
+        margin: 0 0 0 1rem;
+        color: inherit;
+        text-decoration: none;
+        box-sizing: border-box;
+        border-bottom: 0.25rem solid transparent;
+
+        &:hover,
+        &-selected {
+          border-bottom-color: $dark-grey;
+        }
+      }
+    }
+  }
+
+  &__md {
+    a {
+      color: $color-link;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    code {
+      font-size: 1.2em;
+    }
+
+    em code {
+      font-style: normal;
+    }
+
+    pre,
+    blockquote {
+      @include content-block;
+
+      border: 3px solid $color-bg-page;
+      padding: .5em;
+    }
+
+    blockquote {
+      margin: 1em 0;
+      color: $dark-grey;
+
+      p {
+        margin: 0;
+
+        + p {
+          margin-top: 1em;
+        }
+      }
+    }
+
+    h1 {
+      @extend %title;
+      @extend %title1;
+    }
+
+    h2 {
+      @extend %title;
+      @extend %title2;
+    }
+
+    h3 {
+      @extend %title;
+      @extend %title3;
+    }
+
+    h4,
+    h5,
+    h6 {
+      @extend %title;
+      @extend %title4;
+    }
+  }
+
+  &__title {
+    &Link {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover::after {
+        content: '\2714';
+        color: $light-grey;
+      }
+    }
+
+    &1 {
+      @extend %title1;
+    }
+
+    &2 {
+      @extend %title2;
+    }
+
+    &3 {
+      @extend %title3;
+    }
+
+    &4 {
+      @extend %title4;
+    }
+  }
+
+  &__table {
+    font: 1rem Georgia, serif;
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 40rem;
+
+    &Wrapper {
+      overflow: auto;
+    }
+
+    small {
+      font-style: italic;
+    }
+
+    a {
+      color: $color-link;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    th,
+    td {
+      font-weight: normal;
+      text-align: center;
+      border: 1px solid $light-grey;
+      padding: 0.5em 1em;
+    }
+
+    thead {
+      th {
+        background-color: $color-bg-dark-cell;
+        color: $color-fg-dark-cell;
+      }
+
+      tr:first-of-type th {
+        text-transform: uppercase;
+      }
+    }
+
+    tbody {
+      th,
+      td:last-of-type {
+        text-align: left;
+      }
+
+      th,
+      td {
+        background-color: $color-bg-light-cell;
+        color: $color-fg-light-cell;
+      }
+    }
+  }
+
+  &__example {
+    border: 1px solid $light-grey;
+
+    &Head {
+      display: block;
+      color: $color-fg-dark-cell;
+      background: $color-bg-dark-cell;
+      padding: 1rem;
+      margin: 0;
+      border-bottom: 1px solid $light-grey;
+    }
+
+    &Title {
+      code {
+        font-size: 1.2em;
+      }
+    }
+
+    &Markup {
+      margin: 1rem;
+
+      &::after {
+        content: '';
+        display: table-cell;
+        clear: both;
+      }
+    }
+
+    &Code {
+      @include content-block;
+      border: 3px solid $color-bg-page;
+      padding: .5em;
+    }
+  }
+
+  &__colors {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    > li {
+      overflow: hidden;
+    }
+
+    &__demo {
+      float: left;
+      height: 100px;
+      width: 100px;
+      border: 2px solid $grey;
+      margin-bottom: .75em;
+    }
+
+    &__info {
+      margin-left: 120px;
+    }
+
+    &__name {
+      margin-top: 0;
+      margin-bottom: .75em;
+      font-weight: bold;
+    }
+
+    &__hex,
+    &__rgb,
+    &__hsl {
+      font-size: .8em;
+      margin: 0;
+    }
+
+    &__description {
+      color: $dark-grey;
+    }
+  }
+
+  &__icons {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    > li {
+      overflow: hidden;
+    }
+
+    &__demo {
+      float: left;
+      height: 40px;
+      padding: 30px 0;
+      width: 100px;
+      text-align: center;
+      border: 2px solid $grey;
+      font-size: 40px;
+      margin-bottom: .25em;
+
+      // lib/icon
+      font-family: $font-icon;
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+
+      // Better Font Rendering
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    &__info {
+      margin-left: 120px;
+
+      p {
+        margin-top: 0;
+      }
+    }
+
+    &__name {
+      font-weight: bold;
+    }
+
+    &__char {
+      margin: 0;
+    }
+
+    &__description {
+      color: $dark-grey;
+    }
+  }
+}

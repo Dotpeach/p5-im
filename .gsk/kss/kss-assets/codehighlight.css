@@ -1,0 +1,46 @@
+/* Pretty printing styles. Used with prettify.js. */
+
+pre .str, code .str { color: #be7c78; } /* string  - green */
+pre .kwd, code .kwd { color: #52ac87; } /* keyword - verdatre */
+pre .com, code .com { color: #CCC; font-style: italic; } /* comment - gray */
+pre .typ, code .typ { color: #384f75; } /* type - light blue */
+pre .lit, code .lit { color: #c1746f; } /* literal - blue */
+pre .pun, code .pun { color: #666; } /* punctuation - white */
+pre .pln, code .pln { color: #666; } /* plaintext - white */
+pre .tag, code .tag { color: #384f75; } /* html/xml tag    - light blue */
+pre .atn, code .atn { color: #8b7da4; } /* html/xml attribute name  - khaki */
+pre .atv, code .atv { color: #be7c78; } /* html/xml attribute value - green */
+pre .dec, code .dec { color: #caa990; } /* decimal - blue */
+
+pre.prettyprint, code.prettyprint {
+  background-color: #FAFAFA;
+  border: 1px solid #CCC;
+}
+
+pre.prettyprint {
+  box-sizing : border-box;
+  width      : 100%;
+  margin     : 1rem 0;
+  padding    : .5rem;
+  white-space: pre-wrap;
+}
+
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE; } /* IE indents via margin-left */
+/*li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8 { list-style-type: none }*/
+/* Alternate shading for lines */
+li.L1,li.L3,li.L5,li.L7,li.L9 { }
+
+@media print {
+  pre .str, code .str { color: #060; }
+  pre .kwd, code .kwd { color: #006; font-weight: bold; }
+  pre .com, code .com { color: #600; font-style: italic; }
+  pre .typ, code .typ { color: #404; font-weight: bold; }
+  pre .lit, code .lit { color: #044; }
+  pre .pun, code .pun { color: #440; }
+  pre .pln, code .pln { color: #000; }
+  pre .tag, code .tag { color: #006; font-weight: bold; }
+  pre .atn, code .atn { color: #404; }
+  pre .atv, code .atv { color: #060; }
+}

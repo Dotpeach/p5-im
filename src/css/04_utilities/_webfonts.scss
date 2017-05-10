@@ -1,0 +1,93 @@
+// Webfonts
+// ========
+// Import des webfonts, placeholders
+
+
+// Import des fonts
+//-----------------
+
+// Typo de titre
+// -------------
+@font-face {
+    font-family: 'merriweatherbold_italic';
+    src: url('/fonts/merriweather-bolditalic-webfont.woff2') format('woff2'),
+         url('/fonts/merriweather-bolditalic-webfont.woff') format('woff'),
+         url('/fonts/merriweather-bolditalic-webfont.svg#merriweatherbold_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// Typo de contenu
+// ---------------
+@font-face {
+    font-family: 'noto_sansbold';
+    src: url('/fonts/notosans-bold-webfont.woff2') format('woff2'),
+         url('/fonts/notosans-bold-webfont.woff') format('woff'),
+         url('/fonts/notosans-bold-webfont.svg#noto_sansbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'noto_sansbold_italic';
+    src: url('/fonts/notosans-bolditalic-webfont.woff2') format('woff2'),
+         url('/fonts/notosans-bolditalic-webfont.woff') format('woff'),
+         url('/fonts/notosans-bolditalic-webfont.svg#noto_sansbold_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'noto_sansitalic';
+    src: url('/fonts/notosans-italic-webfont.woff2') format('woff2'),
+         url('/fonts/notosans-italic-webfont.woff') format('woff'),
+         url('/fonts/notosans-italic-webfont.svg#noto_sansitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'noto_sansregular';
+    src: url('/fonts/notosans-regular-webfont.woff2') format('woff2'),
+         url('/fonts/notosans-regular-webfont.woff') format('woff'),
+         url('/fonts/notosans-regular-webfont.svg#noto_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+// Placeholder webfont
+// --------------------
+// %basefont {
+//   font-family: $sans-serif-webfont;
+// }
+
+// %basefont_light {
+//   font-family: $sans-serif-webfont_light;
+// }
+
+// %basefont_bold {
+//   font-family: $sans-serif-webfont_bold;
+// }
+
+// %basefont_medium {
+//   font-family: $sans-serif-webfont_medium;
+// }
+
+// %webfont {
+//   font-family: $webfont;
+//   @include font-smoothing(on);
+//   .greek & {
+//     font-family: $alternate-webfont;
+//   }
+// }
+
+%webfont-bold {
+  font-family: $webfont-bold;
+  @include font-smoothing(on);
+}
+
+%heading-webfont {
+  font-family: $heading-font;
+  @include font-smoothing(on);
+}

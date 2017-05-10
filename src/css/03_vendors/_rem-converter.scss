@@ -1,0 +1,46 @@
+// Conversion de pixels en rems
+// ================================
+/* # Styles dédiés pour les navigateurs modernes */
+
+/*
+ - Support de IE<=8 désactivé.
+ - Support de l’unité `rem` activé.
+ - Support des _medias-queries_ activé.
+ - Support de _flexbox_ activé. // IE10+
+
+Note : Il est possible de ne changer que la première des valeurs, les autres sont répercutées automatiquement.
+*/
+$lte-ie8: false;
+$rem: not $lte-ie8;
+
+/* # Typographie */
+/*
+ - `$bfs` : _font-size_ navigateur ;
+ - `$fs0` : _font-size_ projet.
+*/
+
+$bfs: 16px !default;
+$fs0: 16px !default;
+
+/* # Suppresion de l’unité */
+/*
+ - `$number` : variable (avec ou sans unité) passée en paramètre ;
+ - `@return` : variable sans unité retournée.
+*/
+@function strip-unit($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+/*
+ - `$px` : variable en pixels passée en paramètre ;
+ - `$fs0` : contexte de travail égal à la taille de texte du projet ;
+ - Pour les navigateurs modernes. `@return` : équivalence en `rems` retournée.
+ - Pour IE 8 et inférieurs. `@return` : équivalence en pixels retournée.
+*/
+@function rem($px) {
+  @if $rem {
+    @return (strip-unit($px) / strip-unit($bfs) * 1rem);
+  } @else {
+    @return (strip-unit($px) * 1px);
+  }
+}

@@ -1,0 +1,148 @@
+// Snippets : Class utilitaires
+// ============================
+
+// Alignements :
+// -------------
+// Text-align
+.txt-align-right { text-align: right !important; }
+.txt-align-left { text-align: left !important; }
+.txt-align-center { text-align: center !important; }
+
+// Texte barré
+.line-through { text-decoration: line-through !important; }
+
+
+// Float
+.float-left { float: left !important; }
+.float-right { float: right !important; }
+.sc-clearfix { clear: both; }
+.nowrap { white-space: nowrap; }
+
+// Gestion des affichages
+// ----------------------
+.mobileOnly {
+  @media screen and (min-width: $smallscreen-layout) {
+    display: none !important;
+  }
+}
+
+.desktopOnly {
+  @media screen and (max-width: $smallscreen-layout) {
+    display: none !important;
+  }
+}
+
+// Marges des tranches
+// -------------------
+
+// // ### Ajout d'une marge interne
+// %layout-pushBottom--smallest { padding-bottom: 10px !important; }
+// %layout-pushTop--smallest    { padding-top: 10px !important; }
+// .l-pushBottom--smallest      { @extend %layout-pushBottom--smallest; }
+// .l-pushTop--smallest         { @extend %layout-pushTop--smallest; }
+
+// %layout-pushBottom--smaller { padding-bottom: 15px !important; }
+// %layout-pushTop--smaller    { padding-top: 15px !important; }
+// .l-pushBottom--smaller      { @extend %layout-pushBottom--smaller; }
+// .l-pushTop--smaller         { @extend %layout-pushTop--smaller; }
+
+// %layout-pushBottom--min { padding-bottom: 20px !important; }
+// %layout-pushTop--min    { padding-top: 20px !important; }
+// .l-pushBottom--min      { @extend %layout-pushBottom--min; }
+// .l-pushTop--min         { @extend %layout-pushTop--min; }
+
+// %layout-pushBottom--small { padding-bottom: 35px !important; }
+// %layout-pushTop--small    { padding-top: 35px !important; }
+// .l-pushBottom--small      { @extend %layout-pushBottom--small; }
+// .l-pushTop--small         { @extend %layout-pushTop--small; }
+
+// %layout-pushBottom { padding-bottom: 40px !important; }
+// %layout-pushTop    { padding-top: 40px !important; }
+// .l-pushBottom      { @extend %layout-pushBottom; }
+// .l-pushTop         { @extend %layout-pushTop; }
+
+// %layout-pushBottom--large { padding-bottom: 45px !important; }
+// %layout-pushTop--large    { padding-top: 45px !important; }
+// .l-pushBottom--large      { @extend %layout-pushBottom--large; }
+// .l-pushTop--large         { @extend %layout-pushTop--large; }
+
+// %layout-pushBottom--larger { padding-bottom: 60px !important; }
+// %layout-pushTop--larger    { padding-top: 60px !important; }
+// .l-pushBottom--larger      { @extend %layout-pushBottom--larger; }
+// .l-pushTop--larger         { @extend %layout-pushTop--larger; }
+
+// // ### Ajout d'une marge externe
+
+// %layout-addBottom--smaller { margin-bottom: 15px !important; }
+// %layout-addTop--smaller    { margin-top: 15px !important; }
+// .l-addBottom--smaller      { @extend %layout-addBottom--smaller; }
+// .l-addTop--smaller         { @extend %layout-addTop--smaller; }
+
+// %layout-addBottom--min { margin-bottom: 20px !important; }
+// %layout-addTop--min    { margin-top: 20px !important; }
+// .l-addBottom--min      { @extend %layout-addBottom--min; }
+// .l-addTop--min         { @extend %layout-addTop--min; }
+
+// %layout-addBottom--small { margin-bottom: 35px !important; }
+// %layout-addTop--small    { margin-top: 35px !important; }
+// .l-addBottom--small      { @extend %layout-addBottom--small; }
+// .l-addTop--small         { @extend %layout-addTop--small; }
+
+// %layout-addBottom { margin-bottom: 40px !important; }
+// %layout-addTop    { margin-top: 40px !important; }
+// .l-addBottom      { @extend %layout-addBottom; }
+// .l-addTop         { @extend %layout-addTop; }
+
+// %layout-addBottom--large { margin-bottom: 45px !important; }
+// %layout-addTop--large    { margin-top: 45px !important; }
+// .l-addBottom--large      { @extend %layout-addBottom--large; }
+// .l-addTop--large         { @extend %layout-addTop--large; }
+
+// %layout-addBottom--larger { margin-bottom: 60px !important; }
+// %layout-addTop--larger    { margin-top: 60px !important; }
+// .l-addBottom--larger      { @extend %layout-addBottom--larger; }
+// .l-addTop--larger         { @extend %layout-addTop--larger; }
+
+// // ### Suppressions
+// //
+// // Les placeholders de suppression de styles sont déclarés en fin de fichier
+// // pour assurer l'application de la cascade CSS.
+
+// // Supprimer les marges extérieures.
+// %layout-noMargin           { margin: 0 !important; }
+// %layout-removeMargin       { margin: 0 !important; }
+// %layout-noMarginBottom     { margin-bottom: 0 !important; }
+// %layout-removeMarginBottom { margin-bottom: 0 !important; }
+// .l-noMargin                { @extend %layout-noMargin; }
+// .l-end                     { @extend %layout-noMarginBottom; }
+
+// // Supprimer les marges intérieures.
+// %layout-noPadding     { padding: 0 !important; }
+// %layout-removePadding { padding: 0 !important; }
+// %layout-noSidePadding {
+//   padding-left:  0;
+//   padding-right: 0;
+// }
+// .l-noPadding { @extend %layout-noPadding; }
+// .l-noSidePadding { @extend %layout-noSidePadding }
+
+// // Supprimer les bordures.
+// %layout-noBorder     { border: 0 !important; }
+// %layout-removeBorder { border: 0 !important; }
+// .l-noBorder          { @extend %layout-noBorder; }
+
+// // On clean le bottom
+// %layout-noBottom {
+//   border-bottom: 0;
+//   margin-bottom: 0;
+//   padding-bottom: 0;
+// }
+// .l-noBottom { @extend %layout-noBottom; }
+
+// // On clean le top
+// %layout-noTop {
+//   border-top: 0;
+//   margin-top: 0;
+//   padding-top: 0;
+// }
+// .l-noTop { @extend %layout-noTop; }

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ options.title }}</title>
+  <meta name="description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+  <!-- STYLES -->
+  {{ styles|raw }}
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github-gist.min.css">
+</head>
+<body class="ca">
+  <!-- include inline svg symbols -->
+  <div style="display: none">
+    {{ filecontent('../assets/svg/symbols.svg')|raw }}
+  </div>
+
+  <header class="ca__header">
+    <div class="ca__pageWrapper">
+      <h1 class="ca__headerLogo">{{ options.title }}</h1>
+      <ul class="ca__headerNav">
+        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="../../">Liste des pages</a></li>
+        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="../">Documentation</a></li>
+        <li class="ca__headerNavItem ca__headerNavItem-selected"><a class="ca__headerNavLink" href="./">Guide des styles</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="ca__pageWrapper">
+    <nav class="ca__sidebar">
+      <ul class="ca__sidebarMenu">
+        <li class="ca__sidebarMenuItem">
+          <a class="ca__sidebarLink" href="..">
+            <span class="ca__sidebarRef">::</span>
+            Documentation
+          </a>
+        </li>
+      </ul>
+
+      <ul class="ca__sidebarMenu">
+      {% for menu_item in menu %}
+        <li class="ca__sidebarMenuItem">
+          <a class="ca__sidebarLink{% if menu_item.isActive %} ca__sidebarLink-highlight{%endif%}" href="section-{{ menu_item.referenceURI }}.html">
+            <span class="ca__sidebarRef">
+              {{ menu_item.referenceNumber }}
+            </span>
+            {{ menu_item.header }}
+          </a>
+
+          {% if menu_item.isActive and menu_item.children is not empty %}
+            <ul class="ca__sidebarMenu">
+            {% for menu_child in menu_item.children %}
+              <li class="ca__sidebarMenuItem">
+                  <a class="ca__sidebarLink" href="section-{{ menu_item.referenceURI }}.html#kssref-{{ menu_child.referenceURI }}">
+                  <span class="ca__sidebarRef">{{ menu_child.referenceNumber }}</span>
+                  {{ menu_child.header }}
+                </a>
+              </li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+      </ul>
+
+      <ul class="ca__sidebarMenu">
+        <li class="ca__sidebarMenuItem">
+          <a class="ca__sidebarLink" href="../js">
+            <span class="ca__sidebarRef">::</span>
+            API JavaScripts
+          </a>
+        </li>
+        <li class="ca__sidebarMenuItem">
+          <a class="ca__sidebarLink" href=".">
+            <span class="ca__sidebarRef">::</span>
+            Guide des styles
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <main role="main" class="ca__content">
+      {% if homepage %}
+        <article class="ca__md" id="kssref-0">
+          {{ homepage|raw }}
+        </article>
+      {% else %}
+
+        {#
+          Display each section, in order.
+
+          The "root" element comes first in this loop, and can be detected using the
+          "loop.first" variable as seen below.
+        #}
+        {% for section in sections %}
+          <section id="kssref-{{ section.referenceURI }}">
+            <div class="kss-style">
+              {% set headerElement = (section.depth > 6) ? 'h6' : 'h' ~ section.depth %}
+              <{{ headerElement }} class="ca__title{{ section.depth }}">
+                <a class="ca__titleLink" href="#kssref-{{ section.referenceURI }}">
+                  <small>{{ section.referenceNumber }}</small>
+                  {{ section.header }}
+                </a>
+              </{{ headerElement }}>
+
+              {% if section.description %}
+                <div class="ca__md">
+                  {{ section.description|raw }}
+                </div>
+              {% endif %}
+
+              {#
+              TODO: adapt helper to kssColors and kssIcons for kss3 and twig
+              https://github.com/kss-node/kss-node/issues/337
+              https://github.com/twigjs/twig.js/wiki/Extending-twig.js-With-Custom-Tags
+              #}
+
+              {% if section.colors %}
+                <ul class="ca__colors">
+                  {% kssColors section.colors %}
+                    <li>
+                      <div class="ca__colors__demo" style="background-color:{{color.hex}}"></div>
+                      <div class="ca__colors__info">
+                        <p class="ca__colors__name">{{ color.name }}</p>
+                        <p class="ca__colors__hex">{{ color.hex }}</p>
+                        <p class="ca__colors__rgb">rgb({{ color.rgb.r }}, {{ color.rgb.g }}, {{ color.rgb.b }})</p>
+                        <p class="ca__colors__hsl">hsl({{ color.hsl.h }}, {{ color.hsl.s }}, {{ color.hsl.l }})</p>
+                        <p class="ca__colors__description">{{ color.desc|raw }}</p>
+                      </div>
+                    </li>
+                  {% endkssColors %}
+                </ul>
+              {% endif %}
+
+              {% if section.icons %}
+                <ul class="ca__icons">
+                  {% kssIcons section.icons %}
+                    <li>
+                      <div class="ca__icons__demo">{{ icon.character }}</div>
+                      <div class="ca__icons__info">
+                        <p><strong class="ca__icons__name">{{ icon.name }}</strong>: <code class="ca__icons__char">{{ icon.character }}</code></p>
+                        <p class="ca__icons__description">{{ icon.desc|raw }}</p>
+                      </div>
+                    </li>
+                  {% endkssIcons %}
+                </ul>
+              {% endif %}
+
+              {% if section.parameters is not empty %}
+                <div class="ca__tableWrapper">
+                  <table class="ca__table">
+                    <tbody>
+                      {% for parameter in section.parameters %}
+                        <li class="kss-parameters__item">
+                          <th scope="row"><code>{{ parameter.name }}</code></th>
+                          <td>
+                            {{ parameter.description|raw }}
+                            {% if parameter.defaultValue %}
+                              <div>Defaults: <code>{{ parameter.defaultValue }}</code></div>
+                            {% endif %}
+                          </td>
+                        </li>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              {% endif %}
+
+            {% if section.example %}
+              <div class="ca__example">
+                <strong class="ca__exampleHead">
+                  Example{% if section.modifiers is not empty %}s{% endif %}
+                </strong>
+
+                {% if section.modifiers is not empty %}
+                  <div class="ca__exampleTitle">Default styling</div>
+                {% endif %}
+
+                <div class="ca__exampleMarkup">{{ section.example|raw }}</div>
+
+                {% for modifier in section.modifiers %}
+                  <div class="ca__exampleTitle">
+                    <code>{{ modifier.name }}</code> — <em>{{ modifier.description|raw }}</em>
+                  </div>
+                  <div class="ca__exampleMarkup">{{ modifier.markup|raw }}</div>
+                {% endfor %}
+              </div>
+              {% if section.markup %}
+                <pre class="ca__exampleCode"><code class="twig">{{ section.markup|escape('html') }}</code></pre>
+              {% endif %}
+            {% endif %}
+
+            {% if section.sourceFile.name %}
+              <div class="ca__source">
+                Source: <code>{{ section.sourceFile.name }}</code>, line {{ section.sourceFile.line }}
+              </div>
+            {% endif %}
+
+          </section>
+        {% endfor %}
+      {% endif %}
+    </main>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="kss-assets/kss.js"></script>
+  <script src="kss-assets/scrollspy.js"></script>
+  <script>
+    prettyPrint();
+    var spy = new ScrollSpy('body', {
+      nav: '.ca__sidebarLink-highlight .ca__sidebarLink',
+      className: 'is-in-viewport'
+    });
+  </script>
+  {{ scripts|raw }}
+
+  <!-- twig -->
+</body>
+</html>

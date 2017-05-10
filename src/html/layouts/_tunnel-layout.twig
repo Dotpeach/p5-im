@@ -1,0 +1,20 @@
+{# _tunnel-layout.twig
+   Ce gabarit est utilisé pour le tunnel
+#}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+  <title>{{ title }}</title>
+
+  <link href="{% root %}/css/08_components/tunnel.css" rel="stylesheet">
+  {#<link href="{% root %}/css/components.css" rel="stylesheet">#}
+  <script src="{% root %}/js/script.js" async></script>
+</head>
+<body>
+  {% block main %}{% endblock %}
+</body>
+</html>

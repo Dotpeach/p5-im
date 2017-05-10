@@ -1,0 +1,9 @@
+{
+  "name": "kss-node-twig-builder",
+  "version": "3.0.0",
+  "description": "The Twig.js builder for kss-node.",
+  "main": "builder.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

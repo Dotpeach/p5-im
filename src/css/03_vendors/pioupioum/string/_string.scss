@@ -1,0 +1,20 @@
+@function ppm-string-camelize($string, $separator: '-') {
+  $_dash: str-index($string, $separator);
+  @if 'number' == type-of($_dash) {
+    $_prefix:    str-slice($string, 0, $_dash - 1);
+    $_uppercase: to-upper-case(str-slice($string, $_dash + 1, $_dash + 1));
+    $_suffix:    str-slice($string, $_dash + 2);
+    $string:     ppm-string-camelize($_prefix + $_uppercase + $_suffix);
+  }
+
+  @return $string;
+}
+
+@function ppm-string-implode($list, $glue: '') {
+  $string: '';
+  @each $item in $list {
+    $string: $string + $glue + $item;
+  }
+
+  @return str-slice($string, str-length($glue) + 1);
+}

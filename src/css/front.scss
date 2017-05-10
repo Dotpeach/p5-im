@@ -1,0 +1,59 @@
+// CSS Principale
+// ==============
+
+/// Générez un guide des styles
+//
+// Si vous commentez votre code en utilisant la syntaxe
+// [KSS](https://github.com/kss-node/kss/blob/spec/SPEC.md),
+// le Starter Kit generera un guide des styles dans la
+// documentation a chaque build du projet.
+//
+// Styleguide Introduction
+
+// Compass reset utilities
+// @import "compass/reset";
+@import "01_config/global-reset";
+
+// Utilitaires nécessaires avant variables
+@import "04_utilities/mixins";
+
+// Vendors (ressources extérieures)
+@import "03_vendors/pioupioum/pxem"; // Conversion des px en em
+@import "03_vendors/rem-converter"; // Conversion des px en rem
+
+// Imports et variables du thème
+@import "01_config/base";
+@import "01_config/colors";
+@import "01_config/variables";
+@import "01_config/mediaqueries";
+
+
+// Helpers (placeholders)
+@import "02_helpers/**";
+
+// Utilitaires
+// @import "04_utilities/sprites";
+@import "04_utilities/webfonts";
+@import "04_utilities/accessibility";
+@import "04_utilities/snippets";
+// @import "04_utilities/font-icon";
+
+// Styles spécifiques des webforms
+@import "05_forms/**";
+
+// Layout
+// @import "06_layout/general";
+// @import "06_layout/type";
+// @import "06_layout/content";
+// @import "06_layout/header";
+// @import "06_layout/main-menu";
+// @import "06_layout/subnav";
+// @import "06_layout/footer";
+
+// Éléments de l'interface utilisateur
+@import "07_ui/**";
+
+// Surcharge spécifique pour une page
+@import "09_pages/*";
+
+

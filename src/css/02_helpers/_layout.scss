@@ -1,0 +1,66 @@
+  // Helpers : Layout
+// =================
+// Placeholders pour la gestion des dimensions du layout
+
+// Contenu pleine largeur
+%#{$class-prefix}-full-width {
+  width: 100%;
+}
+
+// Container float en pleine largeur
+%#{$class-prefix}-full-width-container {
+  flex-basis: 100%;
+}
+
+// Image de fond responsive
+%#{$class-prefix}-bg-cover {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+// Largeurs de layout :
+%#{$class-prefix}-l-constrained {
+  max-width: $container-width;
+  width: 100%;
+  margin: 0 auto;
+  padding-right: 25px;
+  padding-left: 25px;
+  box-sizing: border-box;
+}
+
+// %#{$class-prefix}-l-constrained-inner {
+//   max-width: $inner-container-width;
+//   width: 100%;
+//   margin: 0 auto;
+//   box-sizing: border-box;
+// }
+
+%#{$class-prefix}-l-whole {
+  // @include l-whole;
+}
+
+%#{$class-prefix}-l-full {
+  flex-basis: 100%;
+  box-sizing: border-box;
+}
+
+%#{$class-prefix}-l-half {
+  flex-basis: 50%;
+  box-sizing: border-box;
+}
+
+%#{$class-prefix}-l-third {
+  flex-basis: 33.3%;
+  box-sizing: border-box;
+}
+
+%#{$class-prefix}-l-2third {
+  flex-basis: 66.6%;
+  box-sizing: border-box;
+}
+
+%#{$class-prefix}-l-quarter {
+  flex-basis: 25%;
+  box-sizing: border-box;
+}

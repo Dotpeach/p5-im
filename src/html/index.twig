@@ -1,0 +1,69 @@
+{# index.twig #}
+{# ------------------------------------------------------------------------- #}
+
+{# LAYOUT #}
+{# ------------------------------------------------------------------------- #}
+{% extends "layouts/_documentation.twig" %}
+
+{# GABARIT PRINCIPAL #}
+{# ------------------------------------------------------------------------- #}
+{% block main %}
+  {% set dir = '' %}
+  {% for file in readdir('./pages') %}
+    {% set data = json(file.directory ~ '/' ~ file.basename ~ '.json') %}
+
+    {% if dir != file.directory %}
+      {% set dir = file.directory %}
+      {% if not loop.first %}
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+
+      <h2 class="ca__title1">
+        {% if     dir == './pages'          %} Pages principales
+        {% elseif dir == './pages/subpages' %} Pages secondaires
+        {% else %}{{ dir }}{% endif %}
+      </h2>
+      <div class="ca__tableWrapper">
+        <table class="ca__table">
+          <thead>
+            <tr>
+              <th scope="col" rowspan="2">Pages</th>
+              <th scope="col" colspan="2">Validation</th>
+              <th scope="col" colspan="4">Navigateur</th>
+              <th scope="col" rowspan="2">Notes</th>
+            </tr>
+            <tr>
+              <th scope="col">CSS</th>
+              <th scope="col">JS</th>
+              <th scope="col">Chrome</th>
+              <th scope="col">Firefox</th>
+              <th scope="col">IE/Edge</th>
+              <th scope="col">Safari</th>
+            </tr>
+          </thead>
+          <tbody>
+    {% endif %}
+
+    <tr>
+      <th scope="row">
+        <strong><a href="{{file.directory}}/{{file.basename}}.html">{% if data.title %}{{ data.title }}{% else %}{{ file.basename }}.html{% endif %}</a></strong><br>
+        <small>{{ data.description }}</small>
+      </th>
+      <td>{{ data.valid.css }}</td>
+      <td>{{ data.valid.js }}</td>
+      <td>{{ data.valid.chrome }}</td>
+      <td>{{ data.valid.firefox }}</td>
+      <td>{{ data.valid.ie }}</td>
+      <td>{{ data.valid.safari }}</td>
+      <td>{{ data.notes }}</td>
+    </tr>
+
+    {% if loop.last %}
+          </tbody>
+        </table>
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endblock main %}

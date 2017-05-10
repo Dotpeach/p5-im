@@ -1,0 +1,21 @@
+// Accessibilité
+// =============================
+
+// Masquer le contenu de façon accessible :
+.#{$class-prefix}-sr-only, %#{$class-prefix}-sr-only, .sr-only  {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+// No JS
+@mixin no-js {
+  .#{$class-no-js} & {
+    @content;
+  }
+}

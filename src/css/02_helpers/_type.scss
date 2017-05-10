@@ -1,0 +1,41 @@
+// Helpers : Type
+// ================
+//
+
+// %is-valid, %is-ok { color: $validation-color; }
+// %is-invalid, %is-nok { color: $alert-color; }
+
+%basefont {
+  font-family: $base-face;
+}
+
+%headingfont {
+ font-family: $heading-font;
+}
+
+// %seriffont {
+//   font-family: $serif-face;
+// }
+
+%webfont {
+  font-family: $webfont;
+  @include font-smoothing(on);
+}
+
+%webfont-bold {
+  font-family: $webfont-bold;
+  //font-weight: 700;
+  @include font-smoothing(on);
+}
+
+// %webfont-black {
+//   font-family: $webfont-black;
+// }
+
+// %webfont-bolditalic {
+//   font-family: $webfont-bolditalic;
+// }
+
+// %webfont-blackitalic {
+//   font-family: $webfont-blackitalic;
+// }

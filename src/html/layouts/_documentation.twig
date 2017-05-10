@@ -1,0 +1,31 @@
+{# _documentation.twig
+   Ce gabarit est utilisé pour les pages de documentation
+#}<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+  <title>{{ title }}</title>
+
+  <link href="{% root %}/css/doc.css" rel="stylesheet">
+</head>
+<body class="ca">
+  <header class="ca__header">
+    <div class="ca__pageWrapper">
+      <h1 class="ca__headerLogo">{{ title }}</h1>
+
+      <ul class="ca__headerNav">
+        <li class="ca__headerNavItem ca__headerNavItem-selected"><a class="ca__headerNavLink" href="{% root %}">Liste des pages</a></li>
+        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{% root %}/doc">Documentation</a></li>
+        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{% root %}/doc/styleguide">Guide des styles</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="ca__pageWrapper">
+    {% block main %}{% endblock %}
+  </main>
+</body>
+</html>

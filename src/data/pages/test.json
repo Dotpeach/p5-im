@@ -1,0 +1,13 @@
+{
+  "title": "Page de test",
+  "description": "Ceci est un exemple de page construit",
+  "notes": "",
+  "valid": {
+    "css"    : "KO",
+    "js"     : "KO",
+    "chrome" : "NON",
+    "firefox": "OUI",
+    "ie"     : "IE: NON<br>EDGE: OUI",
+    "safari" : "Mac OS: OUI<br> iOS: ?"
+  }
+}

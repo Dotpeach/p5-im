@@ -1,0 +1,73 @@
+{# _default.twig
+   Ce gabarit est utilisé par les pages du projets
+#}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+  <title>{{ title }}</title>
+
+  <link href="{% root %}/css/back.css" rel="stylesheet">
+  {#<link href="{% root %}/css/components.css" rel="stylesheet">#}
+  <script src="{% root %}/js/script.js" async></script>
+</head>
+<body>
+  <div class="dashWrapper">
+    <header class="dashSidebar">
+      <div class="dashSidebar_identity" role="banner">Espace logo</div>
+      <div class="dashSidebar_menu" role="navigation">
+        <section class="dashSidebar_menu_section">
+          <h2 class="dashSidebar_menu_title">Liens principaux</h2>
+          <ul class="dashSidebar_menu_list">
+            <li class="dashSidebar_menu_item homepage-cat"><a href="#"><i aria-hidden="true">•</i>Lien</a></li>
+            <li class="dashSidebar_menu_item transactions-cat is-active"><a href="#"><i aria-hidden="true">•</i>Lien</a></li>
+            <li class="dashSidebar_menu_item products-cat"><a href="#"><i aria-hidden="true">•</i>Lien</a></li>
+            <li class="dashSidebar_menu_item identity-cat"><a href="#"><i aria-hidden="true">•</i>Lien</a></li>
+          </ul>
+        </section>
+      </div>
+    </header>
+    <main class="dashMain" role="main">
+      <div class="dashTopbar">
+        <div class="dashBreadcrumb" role="navigation">
+        <ul class="dashBreadcrumb_list">
+          <li class="dashBreadcrumb_item"><a href="" class="dashBreadcrumb_link">item</a></li>
+          <li class="dashBreadcrumb_item"><a href="" class="dashBreadcrumb_link">item</a></li>
+          <li class="dashBreadcrumb_item">item</li>
+        </ul>
+        </div>
+        <div class="dashSearch">
+          <i class="dashSearch_icon">Loupe</i>
+          <span>Barre de recherche</span>
+        </div>
+        <div class="dashUser">
+          <div class="dashUser_avatar">
+            <img src="http://placehold.it/50x50">
+          </div>
+          <span class="dashUser_nickname">admin@cap-com.org</span>
+          <a href="#" class="dashUser_menu">Menu</a>
+        </div>
+        <div class="dashLogout">
+          <a href="#" class="dashLogout_link">Log</a>
+        </div>
+      </div>
+      <div class="dashContent">
+        <div class="dashContent_intro">
+          {% block intro %}{% endblock %}
+        </div>
+        <section class="dashContent_section">
+          <div class="dashContent_section_sidecontent">
+            {% block main %}{% endblock %}
+          </div>
+          <aside class="dashContent_section_sidebar">
+            {% block sidebar %}{% endblock %}
+          </aside>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

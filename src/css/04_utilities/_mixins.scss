@@ -1,0 +1,365 @@
+// Mixins
+// ======
+
+// Virer l'aliasing sur les webfonts
+// Mettre ON ou OFF entre parenthèse
+// ---------------------------------
+@mixin font-smoothing ($value:on) {
+  @if $value == 'on' {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  } 
+    
+  @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+// User select
+// ---------------------------------
+// Permettre ou non la sélection de l'élément 
+// Permet d'empêcher les boutons ou images d'être copiées avec le contenu
+
+@mixin user-select($select) {
+  -webkit-user-select: $select;
+  -moz-user-select: $select;
+  -ms-user-select: $select; // IE10+
+  -o-user-select: $select;
+  user-select: $select;
+}
+
+// Text overflow
+// ---------------------------------
+// Afficher des points de suspensions 
+// quand le texte déborde du conteneur
+
+@mixin text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Square 
+// ---------------------------------
+// Width et Height identique
+@mixin square($dimension) {
+  width: $dimension;
+  height: $dimension;
+}
+
+// Placeholders
+// ---------------------------------
+// Mixin pour styler des placeholders (à insérer au niveau des inputs)
+
+// Couleur des placeholders :
+@mixin placeholder-color($color, $font-weight: 'normal') {
+  &:-moz-placeholder {
+    color: $color;
+    font-weight: $font-weight;
+  }
+  &::-moz-placeholder {
+    color: $color;
+    font-weight: $font-weight;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+    font-weight: $font-weight;
+  }
+  &::-webkit-input-placeholder {
+    color: $color;
+    font-weight: $font-weight;
+  }
+}
+
+// Typo des placeholders :
+@mixin placeholder-font($font-family) {
+  &:-moz-placeholder {
+    font-family: $font-family;
+  }
+  &::-moz-placeholder {
+    font-family: $font-family;
+  }
+  &:-ms-input-placeholder {
+    font-family: $font-family;
+  }
+  &::-webkit-input-placeholder {
+    font-family: $font-family;
+  }
+}
+
+
+// Circle
+// ---------------------------------
+// Mixin pour la création de cercles CSS (avec possibilité de texte à l'intérieur)
+@mixin circle($size:10px,$background:#fff) {
+  background-color:$background;
+  @include border-radius(100%);
+  height:$size;
+  width:$size;
+  text-align:center;
+  display: inline-block;
+ 
+  
+  @if $size < 20 {
+    line-height:$size+1;
+    font-family: Arial,Helvetica,sans-serif !important;
+    font-weight: bold !important;
+  }
+  
+  @else {
+    line-height:$size+2;
+  }
+  
+}
+
+// Triangle (from Bourbon)
+// -----------------------------------
+@mixin triangle ($size, $color, $direction) {
+  height: 0;
+  width: 0;
+
+  @if ($direction == up) or ($direction == down) or ($direction == right) or ($direction == left) {
+    border-color: transparent;
+    border-style: solid;
+    border-width: $size / 2;
+
+    @if $direction == up {
+      border-bottom-color: $color;
+
+    } @else if $direction == right {
+      border-left-color:   $color;
+
+    } @else if $direction == down {
+      border-top-color:    $color;
+
+    } @else if $direction == left {
+      border-right-color:  $color;
+    }
+  }
+
+  @else if ($direction == up-right) or ($direction == up-left) {
+    border-top: $size solid $color;
+
+    @if $direction == up-right {
+      border-left:  $size solid transparent;
+
+    } @else if $direction == up-left {
+      border-right: $size solid transparent;
+    }
+  }
+
+  @else if ($direction == down-right) or ($direction == down-left) {
+    border-bottom: $size solid $color;
+
+    @if $direction == down-right {
+      border-left:  $size solid transparent;
+
+    } @else if $direction == down-left {
+      border-right: $size solid transparent;
+    }
+  }
+}
+
+/*
+  Mixin to styling slider dots - apply on the <ul>
+  Structure must be : ul>li>button (default implementation from slick)
+*/
+@mixin slider-dots ($border-color: #fff, $bg-color:  rgba(#fff, .5), $bg-active-color: #fff, $dots-size: 14px) {
+
+  text-align: center;
+  z-index: 999; // fix IE9
+  li {
+    display: inline-block;
+    margin: 0 7px;
+    button {
+      cursor: pointer;
+      padding: 0;
+      display: block;
+      background: none;
+      background-color: $bg-color;
+      border: 1px solid $border-color;
+      width: $dots-size;
+      height: $dots-size;
+      @include box-sizing(border-box);
+      @include hide-text();
+      @include border-radius(50%);
+      @include transition-property(background-color);
+      @include transition-duration(0.2s);
+      @include transition-timing-function(ease-in);
+    }
+    &:hover {
+      button {
+        background-color: $bg-active-color;
+      }
+    }
+    &.slick-active {
+      button {
+        background-color: $bg-active-color;
+      }
+    }
+  }
+}
+
+
+
+//////////////////////
+// Custom columns grid mixin
+// @ Params  : - $columns : nombre de colonnes
+//             - $gutter-width : the padding size between elements
+//             - $offlist : Allow the first element to be out of the list (0 or 1)
+// @ Usage   : apply on the colum element (like a <li>)
+// @ Credits : Quentin Morel - @morel_quentin - qmorel@clever-age.com - codepen.io/minimo
+//////////////////////
+@mixin ca-is-column($columns: 4, $gutter-width: 20px, $offlist: 0) {
+
+  $column-padding: $gutter-width/$columns !default;
+
+  // Default paddings
+  padding-right: $gutter-width / 2;
+  padding-left: $gutter-width / 2;
+
+  // Default width
+  width: 100%/$columns;
+  @include box-sizing(border-box);
+
+  // Overide padding for the first element if offlist is required
+  @if $offlist != 0 {
+    @for $i from 1 through $offlist {
+      &:nth-child(#{$i}) {
+        padding-right: 0;
+        padding-left: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  // Specific 2 columns
+  @if $columns == 2 {
+    &:nth-child(2n+#{$offlist + 1}) {
+      padding-left: 0;
+      padding-right: $column-padding;
+    }
+    &:nth-child(2n+#{$offlist + 2}) {
+      padding-left: $column-padding;
+      padding-right: 0;
+    }
+  }
+
+  // Specific 3 columns
+  @if $columns == 3 {
+    &:nth-child(3n+#{$offlist + 1}) { // nth-child(1) ou nth-child(2)
+      padding-right: $column-padding*2;
+      padding-left: 0;
+    }
+    &:nth-child(3n+#{$offlist + 2}) { // nth-child(2) ou nth-child(3)
+      padding-left: $column-padding;
+      padding-right: $column-padding;
+    }
+    &:nth-child(3n+#{$offlist + 3}) { // nth-child(3) ou nth-child(4)
+      padding-left: $column-padding*2;
+      padding-right: 0;
+    }
+  }
+
+  // For N columns
+  @if $columns > 3 {
+    &:nth-child(#{$columns}n+#{$offlist + 1}) {
+      padding-left: 0;
+      padding-right: $column-padding*3;
+    }
+    &:nth-child(#{$columns}n+#{$offlist + 2}) {
+      padding-left: $column-padding;
+      padding-right: $column-padding*2;
+    }
+    &:nth-child(#{$columns}n+#{$columns + $offlist - 1}) {
+      padding-left: $column-padding*2;
+      padding-right: $column-padding;
+    }
+    &:nth-child(#{$columns}n+#{$columns + $offlist}) {
+      padding-left: $column-padding*3;
+      padding-right: 0;
+    }
+  }
+}
+
+//////////////////////////
+// @mixin : ca-triangle
+// @params
+//    $height         : CSS height of the triangle
+//    $width          : Width of the triangle, made an equilateral triangle if not spécified
+//    $triangle-color : Triangle color (#fff by default)
+//    $direction      : Direction of the triangle {up, right, left, down (default)}
+// @author : Quentin Morel (Clever-Age) qmorel@clever-age.com
+////////////////////////
+@mixin ca-triangle($height, $width: $height/2, $triangle-color: #fff, $direction: down) {
+
+  //$diagonale : $height *2;
+  //$height: ($diagonale * sqrt(2)) / 2;
+
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  @if $direction == up {
+    border-width: 0 $width $height $width;
+    border-color: transparent transparent $triangle-color transparent;
+  }
+  @if $direction == right {
+    border-width: $height/2 0 $height/2 $width;
+    border-color: transparent transparent transparent $triangle-color;
+  }
+  @if $direction == down {
+    border-width: $height $width 0 $width;
+    border-color: $triangle-color transparent transparent transparent;
+  }
+  @if $direction == left {
+    border-width: $height/2 $width $height/2 0;
+    border-color: transparent $triangle-color transparent transparent;
+  }
+}
+
+
+//////////////////////////
+// @mixin : ca-arraow
+// @params
+//    $height         : height of the arrow
+//    $size           : The border width
+//    $color          : Arrow color (#fff by default)
+//    $direction      : Direction of the triangle {up, right, left, down (default)}
+// @author : Quentin Morel (Clever-Age) qmorel@clever-age.com
+////////////////////////
+@mixin ca-arrow($height, $size, $color: #fff, $direction: 'down') {
+
+  $diagonale : $height *2;
+  $height: ($diagonale * sqrt(2)) / 2;
+
+  display: block;
+  height: $height;
+  width: $height;
+  border-width: $size;
+  border-color: $color;
+  border-top-style: solid;
+  border-right-style: solid;
+  @if($direction == 'up') {
+    transform: rotateZ(-.125turn);
+  }
+  @if($direction == 'right') {
+    transform: rotateZ(.125turn);
+  }
+  @if($direction == 'down') {
+    transform: rotateZ(.375turn);
+  }
+  @if($direction == 'left') {
+    transform: rotateZ(-.375turn);
+  }
+}
+
+// Flexbox flex 1 mixin
+@mixin flex1() {
+  flex-grow: 1; // flex : 1
+  flex-shrink: 1; // flex : 1
+  flex-basis: 0%; // flex : 1
+}
+

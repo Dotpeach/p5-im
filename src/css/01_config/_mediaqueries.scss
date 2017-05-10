@@ -1,0 +1,29 @@
+// Mediaqueries
+// ============
+
+// Les queries sont en pixel et non en em… (à up)
+// ----------------------------------------------
+
+$medium-breakpoint  : (640px / $base-font_size) * 1em !default;
+$large-breakpoint   : (1024px / $base-font_size) * 1em !default;
+
+// Autres breakpoints
+$smallscreen-layout: 900px !default;
+$mobile-layout: 640px !default;
+$tablet-layout: 770px !default;
+
+@mixin smallLayout {
+  @media screen and (max-width: $smallscreen-layout) {
+    @content;
+  }
+}
+@mixin mobileLayout {
+  @media screen and (max-width: $mobile-layout) {
+    @content;
+  }
+}
+@mixin tabletLayout {
+  @media screen and (max-width: $tablet-layout) {
+    @content;
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Sous-page de test",
+  "description": "Ceci est un exemple de sous-page",
+  "notes": "",
+  "valid": {
+    "css"    : "KO",
+    "js"     : "KO",
+    "chrome" : "NON",
+    "firefox": "OUI",
+    "ie"     : "IE: NON<br>EDGE: OUI",
+    "safari" : "Mac OS: OUI<br> iOS: ?"
+  }
+}

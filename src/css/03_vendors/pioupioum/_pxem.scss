@@ -1,0 +1,25 @@
+// A #sass function to convert pixel font-sizes to em's.
+// https://gist.github.com/piouPiouM/5756376
+
+// Convertir l'unité en px $to en unité relative em par rapport
+// à la taille en pixel du $context courant.
+@function ppm-pxem($to, $context: $base-font_size) {
+  // Préserver la valeur spéciale nulle.
+  @if ('null' == type-of($to)) {
+    @return null;
+  }
+  @if ('null' == type-of($context)) {
+    $context: $base-font_size;
+  }
+
+  // Éviter une erreur de syntaxe en l'absence d'unité sur l'un des
+  // deux arguments.
+  @if unitless($to)      { $to: $to + 0px; }
+  @if unitless($context) { $context: $context + 0px; }
+
+  // Le résultat de la division de composants d'une même unité
+  // retourne une valeur dépourvue d'unité. Il suffit alors d'ajouter
+  // 0em pour réaliser la conversion.
+  @return $to / $context + 0em;
+}
+

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{options.title}}</title>
+  <meta name="description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+  <!-- STYLES -->
+  {{{styles}}}
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github-gist.min.css">
+</head>
+<body class="ca">
+  <!-- include inline svg symbols -->
+  <div style="display: none">
+    {{{filecontent '../assets/svg/symbols.svg'}}}
+  </div>
+
+  <header class="ca__header">
+    <div class="ca__pageWrapper">
+      <h1 class="ca__headerLogo">{{options.title}}</h1>
+
+      <ul class="ca__headerNav">
+        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="../../">Liste des pages</a></li>
+        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="../">Documentation</a></li>
+        <li class="ca__headerNavItem ca__headerNavItem-selected"><a class="ca__headerNavLink" href="./">Guide des styles</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="ca__pageWrapper">
+    <nav class="ca__sidebar">
+      <ul class="ca__sidebarMenu">
+        <li class="ca__sidebarMenuItem">
+          <a class="ca__sidebarLink" href="..">
+            <span class="ca__sidebarRef">::</span>
+            Documentation
+          </a>
+        </li>
+      </ul>
+
+      <ul class="ca__sidebarMenu">
+      {{#each menu}}
+        <li class="ca__sidebarMenuItem">
+          <a class="ca__sidebarLink{{#if isActive}} ca__sidebarLink-highlight{{/if}}" href="section-{{referenceURI}}.html">
+            <span class="ca__sidebarRef">
+              {{referenceNumber}}
+            </span>
+            {{header}}
+          </a>
+          {{#if isActive}}
+            {{#if children}}
+              <ul class="ca__sidebarMenu">
+              {{#each children}}
+                <li class="ca__sidebarMenuItem">
+                  <a class="ca__sidebarLink" href="section-{{../referenceURI}}.html#kssref-{{referenceURI}}">
+                    <span class="ca__sidebarRef">{{referenceNumber}}</span>
+                    {{header}}
+                  </a>
+                </li>
+              {{/each}}
+              </ul>
+            {{/if}}
+          {{/if}}
+        </li>
+        {{/each}}
+      </ul>
+
+      <ul class="ca__sidebarMenu">
+        <li class="ca__sidebarMenuItem">
+          <a class="ca__sidebarLink" href="../js">
+            <span class="ca__sidebarRef">::</span>
+            API JavaScripts
+          </a>
+        </li>
+        <li class="ca__sidebarMenuItem">
+          <a class="ca__sidebarLink" href=".">
+            <span class="ca__sidebarRef">::</span>
+            Guide des styles
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <main role="main" class="ca__content">
+      {{#if homepage}}
+        <article class="ca__md" id="kssref-0">
+          {{{homepage}}}
+        </article>
+      {{else}}
+
+        {{!
+          Display each section, in order.
+
+          The "root" element comes first in this loop, and can be detected using
+          the "#if @first" block as seen below.
+        }}
+        {{#each sections}}
+          <section id="kssref-{{referenceURI}}">
+
+            {{! Title of the (sub)section }}
+            <h{{depth}} class="ca__title{{depth}}">
+              <a href="#kssref-{{referenceURI}}" class="ca__titleLink">
+                <small>{{referenceNumber}}</small>
+                {{header}}
+              </a>
+            </h{{depth}}>
+
+            {{#if description}}
+              <div class="ca__md">
+                {{{description}}}
+              </div>
+            {{/if}}
+
+            {{#if colors}}
+              <ul class="ca__colors">
+                {{#kssColors colors}}
+                  <li>
+                    <div class="ca__colors__demo" style="background-color:{{color.hex}}"></div>
+                    <div class="ca__colors__info">
+                      <p class="ca__colors__name">{{color.name}}</p>
+                      <p class="ca__colors__hex">{{color.hex}}</p>
+                      <p class="ca__colors__rgb">rgb({{color.rgb.r}}, {{color.rgb.g}}, {{color.rgb.b}})</p>
+                      <p class="ca__colors__hsl">hsl({{color.hsl.h}}, {{color.hsl.s}}, {{color.hsl.l}})</p>
+                      <p class="ca__colors__description">{{{color.desc}}}</p>
+                    </div>
+                  </li>
+                {{/kssColors}}
+              </ul>
+            {{/if}}
+
+            {{#if icons}}
+              <ul class="ca__icons">
+                {{#kssIcons icons}}
+                  <li>
+                    <div class="ca__icons__demo">{{icon.character}}</div>
+                    <div class="ca__icons__info">
+                      <p><strong class="ca__icons__name">{{icon.name}}</strong>: <code class="ca__icons__char">{{icon.character}}</code></p>
+                      <p class="ca__icons__description">{{{icon.desc}}}</p>
+                    </div>
+                  </li>
+                {{/kssIcons}}
+              </ul>
+            {{/if}}
+
+            {{! Documentation of possible parameters for the (sub) section }}
+            {{#if parameters}}
+              <div class="ca__tableWrapper">
+                <table class="ca__table">
+                  <tbody>
+                  {{#eachParameter}}
+                    <tr>
+                      <th scope="row"><code>{{name}}</code></th>
+                      <td>
+                        {{{description}}}
+                        {{#if defaultValue}}
+                          <div>Default: <code>{{defaultValue}}</code></div>
+                        {{/if}}
+                      </td>
+                    </tr>
+                  {{/eachParameter}}
+                  </tbody>
+                </table>
+              </div>
+            {{/if}}
+
+            {{! Code samples for the (sub) section }}
+            {{#if example}}
+              <div class="ca__example">
+                <strong class="ca__exampleHead">Example{{#if modifiers}}s{{/if}}</strong>
+
+                {{#if modifiers}}
+                  <div class="ca__exampleTitle">Default styling</div>
+                {{/if}}
+                <div class="ca__exampleMarkup">{{{example}}}</div>
+
+                {{#eachModifier}}
+                  <div class="ca__exampleTitle">
+                    <code>{{name}}</code> — <em>{{{description}}}</em>
+                  </div>
+                  <div class="ca__exampleMarkup">{{{markup}}}</div>
+                {{/eachModifier}}
+              </div>
+              {{#if markup}}
+                <pre class="ca__exampleCode"><code class="handlebars">{{markup}}</code></pre>
+              {{/if}}
+            {{/if}}
+
+            {{#if sourceFile.name}}
+              <div class="ca__source">
+                Source: <code>{{sourceFile.name}}</code>, line {{sourceFile.line}}
+              </div>
+            {{/if}}
+
+          </section>
+        {{/each}}
+      {{/if}}
+    </main>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="kss-assets/kss.js"></script>
+  <script src="kss-assets/scrollspy.js"></script>
+  <script>
+    prettyPrint();
+    var spy = new ScrollSpy('body', {
+      nav: '.ca__sidebarLink',
+      className: 'is-in-viewport'
+    });
+  </script>
+  {{{scripts}}}
+
+  <!-- hbs -->
+</body>
+</html>

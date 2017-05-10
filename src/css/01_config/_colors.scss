@@ -1,0 +1,53 @@
+// Palette des couleurs
+// ====================
+
+// Debug
+// ------
+// Variables de couleurs de debug :
+$p : peachpuff !default;
+$r : rebeccapurple !default;
+$l : lightgreen !default;
+
+// Couleurs de base
+// ----------------
+
+$color-white: #fff !default;
+$color-black: #000 !default;
+
+
+// Couleurs back-office
+// --------------------
+
+// BG Layout
+$ebonyclay    : #273147 !default;
+$mystic       : #EDF0F5 !default;
+$whitelilac   : #f9fafd !default;
+// Bg Widget
+$viking       : #52bcde !default;
+$salmon       : #ff8861 !default;
+$coldpurple   : #b196dc !default;
+$downy        : #6ac6bd !default;
+// Contours
+$mystic       : #edf0f5 !default;
+// Couleurs catégories
+$purpleheart  : #6717c1 !default;
+$pictonblue   : #50adf6 !default;
+$orange       : #ff5722 !default;
+$sushi        : #8bc34a !default;
+// Couleurs des textes
+$scorpion     : #5c5b5b !default;
+$greyblue     : #d7e0f1 !default;
+// Couleurs discrètes / inactives
+$linkwater    : #dde5f3 !default;
+
+// Couleurs front-office
+// ---------------------
+
+
+// Layout
+// ------
+$body-bg: $color-white !default;
+
+// Composants
+// ----------
+$color-text-primary:   $scorpion !default;
