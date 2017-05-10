@@ -19,26 +19,13 @@ $color-black: #000 !default;
 // --------------------
 
 // BG Layout
-$ebonyclay    : #273147 !default;
-$mystic       : #EDF0F5 !default;
-$whitelilac   : #f9fafd !default;
-// Bg Widget
-$viking       : #52bcde !default;
-$salmon       : #ff8861 !default;
-$coldpurple   : #b196dc !default;
-$downy        : #6ac6bd !default;
-// Contours
-$mystic       : #edf0f5 !default;
-// Couleurs catégories
-$purpleheart  : #6717c1 !default;
-$pictonblue   : #50adf6 !default;
-$orange       : #ff5722 !default;
-$sushi        : #8bc34a !default;
-// Couleurs des textes
-$scorpion     : #5c5b5b !default;
-$greyblue     : #d7e0f1 !default;
-// Couleurs discrètes / inactives
-$linkwater    : #dde5f3 !default;
+$guardsmanred   : #b90313 !default; // body background
+
+// UI
+$torchred       : #f9061d !default; // message hover // hold/new display // Sunday
+$gray           : #8a8989 !default; // disabled text
+$dovegrave      : #6c6c6c !default; // read avatar default bg
+$pelorous       : #35a9c9 !default; // saturday blue
 
 // Couleurs front-office
 // ---------------------
@@ -46,7 +33,7 @@ $linkwater    : #dde5f3 !default;
 
 // Layout
 // ------
-$body-bg: $color-white !default;
+$body-bg: $guardsmanred !default;
 
 // Composants
 // ----------
